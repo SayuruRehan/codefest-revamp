@@ -55,11 +55,9 @@ export default function Home() {
               className="mx-auto"
             />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Digital Evolution
-          </h1>
+          
           <p className="text-xl md:text-2xl mb-8">
-            Where Ideas Meet Innovation
+            Digital Evolution: Where Ideas Meet Innovation
           </p>
         </div>
       </section>
@@ -99,9 +97,16 @@ export default function Home() {
               <div>
                 <h2 className="text-3xl font-bold mb-6 text-black">Message from the Codefest 2025 Coordinator</h2>
                 <p className="text-lg text-gray-700">
-                  Welcome to SLIIT Codefest 2025! This year, we&apos;re bringing together the brightest
-                  minds in technology to create innovative solutions that will shape the future.
-                  Join us in this exciting journey of learning, collaboration, and innovation.
+                  Dear Innovators, Partners, and Tech Enthusiasts,<br></br>
+                  It is with great pride and excitement that I welcome you to Codefest 2025, the 14th consecutive edition of SLIIT Faculty of Computing’s premier national ICT competition!<br></br>
+                  Over the years, Codefest has grown into a dynamic platform that empowers students across Sri Lanka to showcase their creativity, technical skills, and passion for innovation. This year, we are proud to join hands with the Ministry of Education, the Ministry of Digital Economy, and leading industry partners to elevate the experience and impact of this event.<br></br>
+                  Codefest 2025 promises to be bigger and better, featuring a range of competitions—from school-level to university-level challenges—designed to inspire future tech leaders and foster meaningful industry-academia collaboration.<br></br>
+                  As the Coordinator, I warmly invite students, educators, professionals, and sponsors to be part of this exciting journey. Together, let’s celebrate innovation, drive digital transformation, and shape the future of technology in Sri Lanka.<br></br>
+                  Warm regards,<br></br>
+                  Prof.Anuradha Jayakody<br></br>
+                  Coordinator – Codefest 2025<br></br>
+                  Faculty of Computing, SLIIT<br></br>
+                  anuradha.j@sliit.lk<br></br>
                 </p>
               </div>
               <div className="relative h-96">
