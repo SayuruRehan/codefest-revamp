@@ -24,13 +24,14 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0 }) =>
       threshold: 0.1 // Trigger when 10% of the item is visible
     });
 
-    if (domRef.current) {
-      observer.observe(domRef.current);
+    const currentRef = domRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (domRef.current) {
-        observer.unobserve(domRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

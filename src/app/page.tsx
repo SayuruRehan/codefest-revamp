@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import CountdownTimer from '@/components/CountdownTimer';
 import { useState } from 'react';
 import FadeInSection from '@/components/FadeInSection';
+import Timeline from '@/components/Timeline';
 
 export default function Home() {
   const schoolCategories = [
@@ -98,10 +99,10 @@ export default function Home() {
                 <h2 className="text-3xl font-bold mb-6 text-black">Message from the Codefest 2025 Coordinator</h2>
                 <p className="text-lg text-gray-700">
                   Dear Innovators, Partners, and Tech Enthusiasts,<br></br>
-                  It is with great pride and excitement that I welcome you to Codefest 2025, the 14th consecutive edition of SLIIT Faculty of Computing’s premier national ICT competition!<br></br>
+                  It is with great pride and excitement that I welcome you to Codefest 2025, the 14th consecutive edition of SLIIT Faculty of Computing&apos;s premier national ICT competition!<br></br>
                   Over the years, Codefest has grown into a dynamic platform that empowers students across Sri Lanka to showcase their creativity, technical skills, and passion for innovation. This year, we are proud to join hands with the Ministry of Education, the Ministry of Digital Economy, and leading industry partners to elevate the experience and impact of this event.<br></br>
                   Codefest 2025 promises to be bigger and better, featuring a range of competitions—from school-level to university-level challenges—designed to inspire future tech leaders and foster meaningful industry-academia collaboration.<br></br>
-                  As the Coordinator, I warmly invite students, educators, professionals, and sponsors to be part of this exciting journey. Together, let’s celebrate innovation, drive digital transformation, and shape the future of technology in Sri Lanka.<br></br>
+                  As the Coordinator, I warmly invite students, educators, professionals, and sponsors to be part of this exciting journey. Together, let&apos;s celebrate innovation, drive digital transformation, and shape the future of technology in Sri Lanka.<br></br>
                   Warm regards,<br></br>
                   Prof.Anuradha Jayakody<br></br>
                   Coordinator – Codefest 2025<br></br>
@@ -196,6 +197,9 @@ export default function Home() {
           </div>
         </section>
       </FadeInSection>
+
+      {/* Timeline Section */}
+      <Timeline />
 
       {/* Partners Section */}
       <FadeInSection delay={400}>
