@@ -7,38 +7,11 @@ import CountdownTimer from '@/components/CountdownTimer';
 import { useState } from 'react';
 import FadeInSection from '@/components/FadeInSection';
 import Timeline from '@/components/Timeline';
+import { contests } from "@/data/contests";
+import ContestCard from "@/components/ContestCard";
 
 export default function Home() {
-  const schoolCategories = [
-    'Coding Contest (Primary)',
-    'Coding Contest (Junior)',
-    'Coding Contest (Senior)',
-    'ICT Quiz',
-    'AI Competition',
-  ];
-
-  const tertiaryCategories = [
-    'Designathon',
-    'DevQuest',
-    'Datathon',
-    'CTF',
-    'Netcom',
-    'AI Hackathon',
-    'Innov IoT',
-    'Technopreneur',
-    'Algothon',
-    'ReviveNation',
-  ];
-
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
-
-  const filteredSchoolCategories = selectedCategory === 'All Categories' || selectedCategory === 'School Category'
-    ? schoolCategories
-    : [];
-
-  const filteredTertiaryCategories = selectedCategory === 'All Categories' || selectedCategory === 'Tertiary Category'
-    ? tertiaryCategories
-    : [];
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   return (
     <main className="min-h-screen">
@@ -128,72 +101,24 @@ export default function Home() {
       <FadeInSection delay={300}>
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12 text-black">Competition Categories</h2>
-            
-            {/* Category Filter */}
-            <div className="flex justify-center mb-8 space-x-4">
-              <button
-                className={`relative px-6 py-3 rounded-lg font-semibold transition-colors ${selectedCategory === 'All Categories' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                onClick={() => setSelectedCategory('All Categories')}
-              >
-                All Categories
-                {selectedCategory === 'All Categories' && (
-                  <div className="absolute left-1/2 -bottom-2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-orange-500"></div>
-                )}
-              </button>
-              <button
-                className={`relative px-6 py-3 rounded-lg font-semibold transition-colors ${selectedCategory === 'School Category' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                onClick={() => setSelectedCategory('School Category')}
-              >
-                School Category
-                {selectedCategory === 'School Category' && (
-                  <div className="absolute left-1/2 -bottom-2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-orange-500"></div>
-                )}
-              </button>
-              <button
-                className={`relative px-6 py-3 rounded-lg font-semibold transition-colors ${selectedCategory === 'Tertiary Category' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                onClick={() => setSelectedCategory('Tertiary Category')}
-              >
-                Tertiary Category
-                {selectedCategory === 'Tertiary Category' && (
-                  <div className="absolute left-1/2 -bottom-2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-orange-500"></div>
-                )}
-              </button>
+            <div className="flex items-start">
+              <h2 className="text-3xl font-bold mb-12 text-black mr-[15px]">Competition Categories</h2>
+              {[ "All", "Schools", "Tertiary"].map((category) => (
+                <button
+                  key={category}
+                  className={`${selectedCategory === category ? "bg-black text-white" : "bg-white text-black"} border border-black rounded-4xl px-4 py-1 cursor-pointer mx-1`}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
-
-            {/* School Categories */}
-            {(selectedCategory === 'All Categories' || selectedCategory === 'School Category') && (
-              <div className="mb-16">
-                <h3 className="text-2xl font-semibold mb-6 text-blue-600 text-center">School Category</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredSchoolCategories.map((category) => (
-                    <div
-                      key={category}
-                      className="bg-gray-50 p-6 rounded-lg shadow-sm border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer flex items-center justify-center"
-                    >
-                      <h4 className="text-lg font-bold text-gray-900 text-center">{category}</h4>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Tertiary Categories */}
-            {(selectedCategory === 'All Categories' || selectedCategory === 'Tertiary Category') && (
-              <div>
-                <h3 className="text-2xl font-semibold mb-6 text-blue-600 text-center">Tertiary Category</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredTertiaryCategories.map((category) => (
-                    <div
-                      key={category}
-                      className="bg-gray-50 p-6 rounded-lg shadow-sm border-2 border-transparent hover:border-blue-500 transition-all cursor-pointer flex items-center justify-center"
-                    >
-                      <h4 className="text-lg font-bold text-gray-900 text-center">{category}</h4>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <div className="grid grid-cols-4">
+              {contests
+                .filter(contest => selectedCategory === "All" || contest.category === selectedCategory)
+                .map((contest) => <ContestCard key={contest.name} contest={contest} />)
+              }
+            </div>    
           </div>
         </section>
       </FadeInSection>
