@@ -101,19 +101,19 @@ export default function Home() {
       <FadeInSection delay={300}>
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-start">
-              <h2 className="text-3xl font-bold mb-12 text-black mr-[15px]">Competition Categories</h2>
+            <div className="flex items-start flex-wrap gap-x-3 gap-y-2">
+              <h2 className="text-3xl font-bold mb-12 text-black">Competition Categories</h2>
               {[ "All", "Schools", "Tertiary"].map((category) => (
                 <button
                   key={category}
-                  className={`${selectedCategory === category ? "bg-black text-white" : "bg-white text-black"} border border-black rounded-4xl px-4 py-1 cursor-pointer mx-1`}
+                  className={`${selectedCategory === category ? "bg-black text-white" : "bg-white text-black"} border border-black rounded-4xl px-4 py-1 cursor-pointer`}
                   onClick={() => setSelectedCategory(category)}
                 >
                   {category}
                 </button>
               ))}
             </div>
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-6 mt-6">
               {contests
                 .filter(contest => selectedCategory === "All" || contest.category === selectedCategory)
                 .map((contest) => <ContestCard key={contest.name} contest={contest} />)
