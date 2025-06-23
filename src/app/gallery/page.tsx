@@ -1,0 +1,57 @@
+'use client';
+
+import Masonry from '@/components/Masonry';
+
+const items = [
+  {
+    id: "1",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/one",
+    height: 400,
+  },
+  {
+    id: "2",
+    img: "https://picsum.photos/id/1011/600/750?grayscale",
+    url: "https://example.com/two",
+    height: 250,
+  },
+  {
+    id: "3",
+    img: "https://picsum.photos/id/1020/600/800?grayscale",
+    url: "https://example.com/three",
+    height: 600,
+  },
+  {
+    id: "4",
+    img: "https://picsum.photos/id/1020/600/800?grayscale",
+    url: "https://example.com/three",
+    height: 200,
+  },
+   {
+    id: "5",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 400,
+  },
+];
+
+export default function GalleryPage() {
+  return (
+    <main className="min-h-screen pt-24 pb-12 px-4 bg-white">
+      <h1 className="text-3xl font-bold text-center mb-12 text-black">Gallery</h1>
+      <div className="relative h-[2000px]">
+        <Masonry
+          items={items}
+          ease="power3.out"
+          duration={0.6}
+          stagger={0.05}
+          animateFrom="bottom"
+          scaleOnHover={true}
+          hoverScale={0.95}
+          blurToFocus={true}
+          colorShiftOnHover={true}
+        />
+      </div>
+    </main>
+  );
+}
