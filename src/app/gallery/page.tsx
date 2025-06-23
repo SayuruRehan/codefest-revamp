@@ -33,6 +33,48 @@ const items = [
     url: "https://example.com/three",
     height: 400,
   },
+  {
+    id: "6",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 400,
+  },
+  {
+    id: "7",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 400,
+  },
+  {
+    id: "8",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 800,
+  },
+  {
+    id: "9",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 300,
+  },
+  {
+    id: "10",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 700,
+  },
+  {
+    id: "11",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 600,
+  },
+  {
+    id: "12",
+    img: "https://picsum.photos/id/1015/600/900?grayscale",
+    url: "https://example.com/three",
+    height: 300,
+  },
 ];
 
 export default function GalleryPage() {
