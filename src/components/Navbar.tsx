@@ -1,97 +1,134 @@
-'use client';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { Sarala } from "next/font/google";
 
-import Link from 'next/link';
-import { useState } from 'react';
+const sarala = Sarala({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("home");
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Competition Details', path: '/competition-details' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Registration', path: '/registration' },
-    { name: 'Workshops', path: '/workshops' },
-    { name: 'Contact Us', path: '/contact' },
+    { id: "home", name: "Home", path: "/" },
+    { id: "competition-details", name: "Competition Details", path: "/" },
+    { id: "gallery", name: "Gallery", path: "/" },
+    { id: "registration", name: "Registration", path: "/" },
+    { id: "workshops", name: "Workshops", path: "/" },
+    { id: "contact", name: "Contact Us", path: "/" },
   ];
 
+  const handleItemClick = (itemId: string) => {
+    setActiveItem(itemId);
+    setIsOpen(false); // close mobile menu
+  };
+
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold text-blue-600">Codefest 2025</span>
-            </Link>
-          </div>
-
-          {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-8">
+    <>
+      {/* Desktop Navbar */}
+      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
+        <div
+          className={`bg-white/20 backdrop-blur-md rounded-xl px-3 py-1 shadow-lg ${sarala.className}`}
+        >
+          <ul className="flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="relative text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-semibold transition-colors group"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              <li key={item.id}>
+                <Link
+                  href={item.path}
+                  onClick={() => handleItemClick(item.id)}
+                  className={`group relative text-sm transition-all duration-300 whitespace-nowrap ${
+                    activeItem === item.id
+                      ? "text-black font-medium"
+                      : "text-gray-700 hover:text-black"
+                  }`}
+                >
+                  <span className="whitespace-nowrap">{item.name}</span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
+      </nav>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+      {/* Mobile Navbar */}
+      <nav className="fixed top-4 left-4 right-4 z-50 md:hidden">
+        <div
+          className={`bg-white/20 backdrop-blur-md  rounded-2xl px-3 py-0.5 shadow-lg ${sarala.className}`}
+        >
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link
+              href="/"
+              onClick={() => handleItemClick("home")}
+              className="flex items-center"
+            >
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={100}
+                height={50}
+                className="w-auto h-10 object-contain"
+              />
+            </Link>
+
+            {/* Hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+              aria-label="Toggle menu"
             >
-              <svg
-                className="h-6 w-6"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
+              <div
+                className={`w-6 h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
+                  isOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              ></div>
+              <div
+                className={`w-6 h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
+                  isOpen ? "opacity-0" : ""
+                }`}
+              ></div>
+              <div
+                className={`w-6 h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
+                  isOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              ></div>
             </button>
           </div>
-        </div>
-      </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="relative text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-semibold transition-colors group"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
+          {/* Mobile Menu Dropdown */}
+          <div
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+              isOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+            }`}
+          >
+            <ul className="space-y-3 py-2">
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={item.path}
+                    onClick={() => handleItemClick(item.id)}
+                    className={`group relative block px-2 py-1.5 text-sm transition-all whitespace-nowrap ${
+                      activeItem === item.id
+                        ? "text-gray-900 font-medium"
+                        : "text-gray-700 hover:text-gray-900"
+                    }`}
+                  >
+                    <span>{item.name}</span>
+                    {/* underline animation */}
+                    <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      )}
-    </nav>
+      </nav>
+    </>
   );
 };
 
-export default Navbar; 
+export default Navbar;
