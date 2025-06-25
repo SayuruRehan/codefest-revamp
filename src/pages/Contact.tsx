@@ -4,12 +4,12 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import FadeInSection from '@/components/FadeInSection';
 import Navbar from '@/components/Navbar';
-import { Caveat } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 
-const caveat = Caveat({
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-caveat',
+  variable: '--font-montserrat',
 });
 
 function ContactInfoItem({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
@@ -17,8 +17,8 @@ function ContactInfoItem({ icon, title, text }: { icon: React.ReactNode; title: 
     <div className="flex items-center space-x-4">
       {icon}
       <div>
-        <h3 className="text-base font-semibold text-white">{title}</h3>
-        <p className="text-orange-100 text-sm md:text-base">{text}</p>
+        <h3 className="text-base font-bold text-white">{title}</h3>
+        <p className="text-orange-100 text-sm md:text-base font-normal">{text}</p>
       </div>
     </div>
   );
@@ -39,7 +39,7 @@ function InputField({
 }) {
   return (
     <div>
-      <label className="block mb-2 font-medium text-blue-800 font-handwritten">
+      <label className="block mb-2 font-normal text-blue-800">
         {label}
         {required && <span className="text-red-500"> *</span>}
       </label>
@@ -50,7 +50,7 @@ function InputField({
         required={required}
         className="w-full border border-blue-200 rounded-lg p-3 text-gray-900 text-base md:text-lg
           focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent
-          transition-all duration-200 bg-white font-handwritten"
+          transition-all duration-200 bg-white font-normal"
       />
     </div>
   );
@@ -115,11 +115,11 @@ export default function Contact() {
 
   if (state.isSubmitted) {
     return (
-      <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white ${caveat.variable}`}>
+      <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white ${montserrat.variable} font-sans`}>
         <div className="fixed top-0 left-0 right-0 z-50">
           <Navbar />
         </div>
-        <main className="flex-grow flex items-center justify-center pt-28 px-4 py-12 md:px-8 md:py-16 font-sans">
+        <main className="flex-grow flex items-center justify-center pt-28 px-4 py-12 md:px-8 md:py-16">
           <div className="max-w-7xl w-full">
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-300 p-8 md:p-12 max-w-2xl mx-auto text-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-green-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -128,7 +128,7 @@ export default function Contact() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-800">
                 Message Sent Successfully!
               </h2>
-              <p className="text-lg text-blue-700 mb-6">
+              <p className="text-lg text-blue-700 mb-6 font-normal">
                 Thank you for contacting us. We'll get back to you soon.
               </p>
               <Link href="/" className="inline-block text-orange-600 hover:text-orange-700 font-medium">
@@ -143,13 +143,13 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                   <h3 className="text-xl font-bold mb-4">SLIIT Codefest 2025</h3>
-                  <p className="text-blue-200">
+                  <p className="text-blue-200 font-normal">
                     The largest inter-university hackathon in Sri Lanka
                   </p>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 font-normal">
                     <li>
                       <Link href="/competition-details" className="text-blue-200 hover:text-white">
                         Competition Details
@@ -169,13 +169,13 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-4">Contact</h3>
-                  <p className="text-blue-200">
+                  <p className="text-blue-200 font-normal">
                     Email: info@codefest.lk<br />
                     Phone: +94 XX XXX XXXX
                   </p>
                 </div>
               </div>
-              <div className="mt-8 pt-8 border-t border-blue-700 text-center text-blue-200">
+              <div className="mt-8 pt-8 border-t border-blue-700 text-center text-blue-200 font-normal">
                 <p>&copy; 2024 SLIIT Codefest. All rights reserved.</p>
               </div>
             </div>
@@ -186,17 +186,17 @@ export default function Contact() {
   }
 
   return (
-    <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white ${caveat.variable}`}>
+    <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white ${montserrat.variable} font-sans`}>
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
-      <main className="flex-grow pt-28 px-4 py-12 md:px-8 md:py-16 font-sans">
+      <main className="flex-grow pt-28 px-4 py-12 md:px-8 md:py-16">
         <div className="max-w-7xl mx-auto">
           <div className="w-full mt-8 mb-12 md:mb-16 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-orange-600 mb-4 tracking-tight">
               Contact SLIIT
             </h1>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto text-blue-800 leading-relaxed">
+            <p className="text-lg md:text-xl max-w-3xl mx-auto text-blue-800 leading-relaxed font-normal">
               We'd love to hear from you! Reach out with questions, feedback, or just to say hello.
             </p>
           </div>
@@ -260,11 +260,11 @@ export default function Contact() {
                 Send Your Message
               </h2>
               {state.error && (
-                <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+                <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg font-normal">
                   {state.error}
                 </div>
               )}
-              <form onSubmit={handleSubmit} className="space-y-6 font-handwritten">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <input 
                   type="hidden" 
                   name="access_key" 
@@ -291,21 +291,21 @@ export default function Contact() {
 
                 <InputField 
                   label="Email" 
-                  name="email" 
-                  placeholder="Email Address" 
-                  type="email" 
-                  required 
+                    name="email" 
+                    placeholder="Email Address" 
+                    type="email" 
+                    required 
                 />
 
                 <div>
-                  <label className="block mb-2 font-medium text-blue-800">Your Message</label>
+                  <label className="block mb-2 font-normal text-blue-800">Your Message</label>
                   <textarea
                     name="message"
                     rows={5}
                     placeholder="What would you like to discuss?"
                     className="w-full border border-blue-200 rounded-lg p-3 text-gray-900 text-base md:text-lg resize-none
                       focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent
-                      transition-all duration-200 bg-white font-handwritten"
+                      transition-all duration-200 bg-white font-normal"
                     required
                   ></textarea>
                 </div>
@@ -313,7 +313,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={state.isLoading}
-                  className={`w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-lg 
+                  className={`w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium py-3 px-6 rounded-lg 
                     shadow-md hover:shadow-lg transition-all duration-300
                     flex items-center justify-center space-x-2 ${state.isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
@@ -346,13 +346,13 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <h3 className="text-xl font-bold mb-4">SLIIT Codefest 2025</h3>
-                <p className="text-blue-200">
+                <p className="text-blue-200 font-normal">
                   The largest inter-university hackathon in Sri Lanka
                 </p>
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-2 font-normal">
                   <li>
                     <Link href="/competition-details" className="text-blue-200 hover:text-white">
                       Competition Details
@@ -372,13 +372,13 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-4">Contact</h3>
-                <p className="text-blue-200">
+                <p className="text-blue-200 font-normal">
                   Email: info@codefest.lk<br />
                   Phone: +94 XX XXX XXXX
                 </p>
               </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-blue-700 text-center text-blue-200">
+            <div className="mt-8 pt-8 border-t border-blue-700 text-center text-blue-200 font-normal">
               <p>&copy; 2024 SLIIT Codefest. All rights reserved.</p>
             </div>
           </div>

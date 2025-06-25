@@ -19,7 +19,7 @@ const Navbar = () => {
     { id: "gallery", name: "Gallery", path: "/" },
     { id: "registration", name: "Registration", path: "/" },
     { id: "workshops", name: "Workshops", path: "/" },
-    { id: "contact", name: "Contact Us", path: "/" },
+    { id: "contact", name: "Contact Us", path: "/Contact" },
   ];
 
   const handleItemClick = (itemId: string) => {
