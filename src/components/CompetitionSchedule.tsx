@@ -183,14 +183,36 @@ const scheduleData = [
 
 export default function CompetitionSchedule() {
   const [currentPage, setCurrentPage] = useState(1);
-  const entriesPerPage = 10; // Fixed value since selector is removed
+  const [searchQuery, setSearchQuery] = useState("");
+  const [entriesPerPage, setEntriesPerPage] = useState(10);
+
+  // Filter data based on search query
+  const filteredData = scheduleData.filter(
+    (item) =>
+      item.competition.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.regClose.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.firstRound.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.finalRound.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // Calculate pagination
-  const totalEntries = scheduleData.length;
+  const totalEntries = filteredData.length;
   const totalPages = Math.ceil(totalEntries / entriesPerPage);
   const startIndex = (currentPage - 1) * entriesPerPage;
   const endIndex = startIndex + entriesPerPage;
-  const currentEntries = scheduleData.slice(startIndex, endIndex);
+  const currentEntries = filteredData.slice(startIndex, endIndex);
+
+  // Reset to first page when search changes
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+
+  // Handle entries per page change
+  const handleEntriesPerPageChange = (newEntriesPerPage: number) => {
+    setEntriesPerPage(newEntriesPerPage);
+    setCurrentPage(1);
+  };
 
   return (
     <FadeInSection delay={350}>
@@ -199,6 +221,61 @@ export default function CompetitionSchedule() {
           <h2 className="text-3xl font-bold text-center mb-12 text-black">
             Competition Schedule
           </h2>
+
+          {/* Controls Row - Entries per page on left, Search on right */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+            {/* Entries per page selector - Left side */}
+            <div className="flex items-center gap-3">
+              <label
+                htmlFor="entriesPerPage"
+                className="text-sm font-semibold text-gray-700"
+              >
+                Show
+              </label>
+              <select
+                id="entriesPerPage"
+                value={entriesPerPage}
+                onChange={(e) =>
+                  handleEntriesPerPageChange(Number(e.target.value))
+                }
+                className="border-2 border-gray-200 rounded-lg px-3 py-2 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
+              >
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
+              <span className="text-sm font-semibold text-gray-700">
+                entries per page
+              </span>
+            </div>
+
+            {/* Search Bar - Right side */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search competitions"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="w-80 pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
+              />
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
 
           {/* Table Container */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
