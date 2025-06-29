@@ -228,7 +228,7 @@ export default function CompetitionSchedule() {
             <div className="flex items-center gap-3">
               <label
                 htmlFor="entriesPerPage"
-                className="text-sm font-semibold text-gray-700"
+                className="text-sm font-semibold text-gray-500"
               >
                 Show
               </label>
@@ -245,7 +245,7 @@ export default function CompetitionSchedule() {
                 <option value={50}>50</option>
                 <option value={100}>100</option>
               </select>
-              <span className="text-sm font-semibold text-gray-700">
+              <span className="text-sm font-semibold text-gray-500">
                 entries per page
               </span>
             </div>
