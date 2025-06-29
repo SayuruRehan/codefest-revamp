@@ -10,6 +10,7 @@ const scheduleData = [
     regClose: "15th August 2025",
     firstRound: "22nd August 2025",
     finalRound: "4th September 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Coding Contest Junior",
@@ -17,6 +18,7 @@ const scheduleData = [
     regClose: "15th August 2025",
     firstRound: "22nd August 2025",
     finalRound: "4th September 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "Coding Contest Senior",
@@ -24,6 +26,7 @@ const scheduleData = [
     regClose: "15th August 2025",
     firstRound: "22nd August 2025",
     finalRound: "4th September 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "ICT Quiz",
@@ -31,6 +34,7 @@ const scheduleData = [
     regClose: "15th August 2025",
     firstRound: "8th August 2025",
     finalRound: "4th September 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "AI competition",
@@ -38,6 +42,7 @@ const scheduleData = [
     regClose: "15th August 2025",
     firstRound: "22nd August 2025",
     finalRound: "4th September 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Algothon",
@@ -45,6 +50,7 @@ const scheduleData = [
     regClose: "18th July 2025",
     firstRound: "25th July 2025",
     finalRound: "22nd August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "Designation",
@@ -52,6 +58,7 @@ const scheduleData = [
     regClose: "25th July 2025",
     firstRound: "1st August 2025",
     finalRound: "2nd September 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "DevQuest",
@@ -59,6 +66,7 @@ const scheduleData = [
     regClose: "To be announced",
     firstRound: "To be announced",
     finalRound: "To be announced",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Datathon",
@@ -66,6 +74,7 @@ const scheduleData = [
     regClose: "To be announced",
     firstRound: "26th July 2025",
     finalRound: "23rd August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "Capture the Flag",
@@ -73,6 +82,7 @@ const scheduleData = [
     regClose: "13th August 2025",
     firstRound: "23rd August 2025",
     finalRound: "2nd September 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "Web Development Challenge",
@@ -80,6 +90,7 @@ const scheduleData = [
     regClose: "20th July 2025",
     firstRound: "28th July 2025",
     finalRound: "15th August 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Mobile App Development",
@@ -87,6 +98,7 @@ const scheduleData = [
     regClose: "5th August 2025",
     firstRound: "12th August 2025",
     finalRound: "25th August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "UI/UX Design Contest",
@@ -94,6 +106,7 @@ const scheduleData = [
     regClose: "10th August 2025",
     firstRound: "17th August 2025",
     finalRound: "30th August 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "Game Development",
@@ -101,6 +114,7 @@ const scheduleData = [
     regClose: "22nd July 2025",
     firstRound: "29th July 2025",
     finalRound: "12th August 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Blockchain Challenge",
@@ -108,6 +122,7 @@ const scheduleData = [
     regClose: "8th August 2025",
     firstRound: "15th August 2025",
     finalRound: "28th August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "IoT Innovation",
@@ -115,6 +130,7 @@ const scheduleData = [
     regClose: "12th August 2025",
     firstRound: "19th August 2025",
     finalRound: "1st September 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "Cybersecurity Challenge",
@@ -122,6 +138,7 @@ const scheduleData = [
     regClose: "6th August 2025",
     firstRound: "13th August 2025",
     finalRound: "26th August 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Data Visualization",
@@ -129,6 +146,7 @@ const scheduleData = [
     regClose: "18th July 2025",
     firstRound: "25th July 2025",
     finalRound: "8th August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "Machine Learning Sprint",
@@ -136,6 +154,7 @@ const scheduleData = [
     regClose: "14th August 2025",
     firstRound: "21st August 2025",
     finalRound: "3rd September 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "Cloud Computing Challenge",
@@ -143,6 +162,7 @@ const scheduleData = [
     regClose: "16th July 2025",
     firstRound: "23rd July 2025",
     finalRound: "6th August 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Database Design Contest",
@@ -150,6 +170,7 @@ const scheduleData = [
     regClose: "24th July 2025",
     firstRound: "31st July 2025",
     finalRound: "14th August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "Network Security",
@@ -157,6 +178,7 @@ const scheduleData = [
     regClose: "2nd August 2025",
     firstRound: "9th August 2025",
     finalRound: "22nd August 2025",
+    image: "/ict-quiz.png",
   },
   {
     competition: "Robotics Challenge",
@@ -164,6 +186,7 @@ const scheduleData = [
     regClose: "28th July 2025",
     firstRound: "4th August 2025",
     finalRound: "18th August 2025",
+    image: "/coding-contest-primary.png",
   },
   {
     competition: "Virtual Reality Development",
@@ -171,6 +194,7 @@ const scheduleData = [
     regClose: "11th August 2025",
     firstRound: "18th August 2025",
     finalRound: "31st August 2025",
+    image: "/coding-contest-junior.png",
   },
   {
     competition: "Digital Marketing Tech",
@@ -178,13 +202,14 @@ const scheduleData = [
     regClose: "7th August 2025",
     firstRound: "14th August 2025",
     finalRound: "27th August 2025",
+    image: "/ict-quiz.png",
   },
 ];
 
 export default function CompetitionSchedule() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [entriesPerPage, setEntriesPerPage] = useState(10);
+  const [entriesPerPage] = useState(10);
 
   // Filter data based on search query
   const filteredData = scheduleData.filter(
@@ -208,58 +233,15 @@ export default function CompetitionSchedule() {
     setCurrentPage(1);
   };
 
-  // Handle entries per page change
-  const handleEntriesPerPageChange = (newEntriesPerPage: number) => {
-    setEntriesPerPage(newEntriesPerPage);
-    setCurrentPage(1);
-  };
-
   return (
     <FadeInSection delay={350}>
       <section className="py-16 bg-gray-50">
+        {" "}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* <h2 className="text-3xl font-bold text-center mb-12 text-black">
-            Competition Schedule
-          </h2> */}
-
-          {/* Controls Row - Entries per page on left, Search on right */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-            {/* Entries per page selector - Left side */}
-            <div className="flex items-center gap-3">
-              <label
-                htmlFor="entriesPerPage"
-                className="text-sm font-semibold text-gray-500"
-              >
-                Show
-              </label>
-              <select
-                id="entriesPerPage"
-                value={entriesPerPage}
-                onChange={(e) =>
-                  handleEntriesPerPageChange(Number(e.target.value))
-                }
-                className="border-2 border-gray-200 rounded-lg px-3 py-2 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
-              >
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
-              <span className="text-sm font-semibold text-gray-500">
-                entries per page
-              </span>
-            </div>
-
-            {/* Search Bar - Right side */}
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search competitions"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="w-80 pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
-              />
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          {/* Search Bar - Centered */}
+          <div className="flex justify-center mb-12">
+            <div className="relative w-full max-w-2xl">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <svg
                   className="h-5 w-5 text-gray-400"
                   fill="none"
@@ -274,55 +256,75 @@ export default function CompetitionSchedule() {
                   />
                 </svg>
               </div>
+              <input
+                type="text"
+                placeholder="Search competitions"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-full text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+              />
             </div>
           </div>
 
-          {/* Table Container */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            {/* Table Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 font-semibold">
-              <div className="text-center">Competition</div>
-              <div className="text-center">Registration Status</div>
-              <div className="text-center">Registration Close</div>
-              <div className="text-center">First Round</div>
-              <div className="text-center">Final Round</div>
-            </div>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentEntries.map((competition, index) => (
+              <div
+                key={startIndex + index}
+                className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+              >
+                {/* Competition Name Header */}
+                {/* <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4">
+                  <h3 className="text-xl font-bold text-center">
+                    {competition.competition}
+                    Registration Open
+                  </h3>
+                </div> */}
 
-            {/* Table Rows */}
-            <div className="divide-y divide-gray-200">
-              {currentEntries.map((row, index) => (
+                {/* Background Image Section */}
                 <div
-                  key={startIndex + index}
-                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 hover:bg-blue-50 transition-colors duration-200 group"
-                >
-                  <div className="text-center lg:text-left">
-                    <div className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
-                      {row.competition}
+                  className="h-32 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${competition.image})`,
+                  }}
+                />
+
+                {/* Card Body - Registration Info and Round Information */}
+                <div className="p-6 space-y-4">
+                  {/* Registration Info */}
+                  <div className="text-center">
+                    <div className="items-center px-3 py-1  text-xs font-bold bg-green-100 text-green-800 border border-green-200 mb-2">
+                      {competition.regOpen}
                     </div>
+                    <p className="text-sm font-bold text-gray-900">
+                      Registration Close - {competition.regClose}
+                    </p>
                   </div>
-                  <div className="text-center">
-                    <span className="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
-                      {row.regOpen}
-                    </span>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-gray-700 font-medium">
-                      {row.regClose}
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-gray-700 font-medium">
-                      {row.firstRound}
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-gray-700 font-medium">
-                      {row.finalRound}
+
+                  {/* Round Information */}
+                  <div className="border-t pt-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm font-bold text-gray-600 mb-1">
+                          First Round
+                        </p>
+                        <p className="text-sm font-bold text-gray-900">
+                          {competition.firstRound}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-gray-600 mb-1">
+                          Final Round
+                        </p>
+                        <p className="text-sm font-bold text-gray-900">
+                          {competition.finalRound}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
           {/* Pagination Info */}
