@@ -14,25 +14,58 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative bg-white">
+      {/* Blue spotlight - Top left */}
+      <div className="absolute -top-48 left-1/5 w-120 h-120 bg-[#0042AD] rounded-full blur-3xl opacity-40 z-0"></div>
+      {/* Orange spotlight - Top right */}
+      <div className="absolute -top-48 right-1/5 w-120 h-120 bg-[#FF7400] rounded-full blur-3xl opacity-40 z-0"></div>
+
+      {/* Left side blue fade */}
+      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#0042AD]/20 to-transparent z-0"></div>
+
+      {/* Right side orange fade */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#FF7400]/20 to-transparent z-0"></div>
+
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gradient-to-b from-blue-600 to-blue-800 text-white flex items-center justify-center min-h-[70vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8">
-            <Image
-              src="/logo.png"
-              alt="SLIIT Codefest 2025 Logo"
-              width={200}
-              height={200}
-              className="mx-auto"
-            />
-          </div>
+      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden text-center px-4">
+        {/* Logo */}
+        <div className="mt-10 mb-10 z-20">
+          <Image
+            src="/logo.png"
+            alt="SLIIT Codefest 2025 Logo"
+            width={500}
+            height={120}
+            className="mx-auto w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] h-auto"
+          />
+        </div>
 
-          <p className="text-xl md:text-2xl mb-8">
-            Digital Evolution: Where Ideas Meet Innovation
-          </p>
+        {/* Main Heading */}
+        <div className="mb-20 z-20">
+          <h1
+            className="font-extralight leading-tight tracking-wide bg-gradient-to-r from-gray-300 via-gray-300 to-orange-300 bg-clip-text text-transparent opacity-80"
+            style={{
+              fontSize: "clamp(2rem, 6vw, 6rem)", // auto-scales from mobile to large desktop
+            }}
+          >
+            where ideas meet
+          </h1>
+        </div>
+
+        {/* Full-width Innovation Text */}
+        <div className="absolute inset-x-0 bottom-0 overflow-hidden z-10">
+          <h2
+            className="font-extralight leading-none tracking-wide whitespace-nowrap bg-gradient-to-r from-gray-400 via-gray-400 to-orange-400 bg-clip-text text-transparent opacity-40"
+            style={{
+              fontSize: "clamp(4rem, 18vw, 15rem)", // huge auto-scaling text
+            }}
+          >
+            innovation
+            {/* Bottom fade overlay */}
+            <div className="absolute inset-x-0 bottom-0 h-[15vh] bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+          </h2>
+
         </div>
       </section>
 
