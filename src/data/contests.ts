@@ -6,6 +6,7 @@ export interface Contest {
   long_description: string,
   registration_deadline: Date,
   category?: "Schools" | "Tertiary" | null,
+  tags: string[],
   timeline_events: {
     [event: string]: {
       start_date: Date,
@@ -23,6 +24,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Schools",
+    tags: ["Featured", "Programming", "Primary"],
     timeline_events: {}
   },
   {
@@ -33,6 +35,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Schools",
+    tags: ["Junior", "Programming", "Schools"],
     timeline_events: {}
   },
   {
@@ -43,6 +46,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Schools",
+    tags: ["Senior", "Programming", "Schools"],
     timeline_events: {}
   },
   {
@@ -53,6 +57,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Schools",
+    tags: ["Quiz", "Knowledge", "ICT"],
     timeline_events: {}
   },
   {
@@ -63,6 +68,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Schools",
+    tags: ["AI", "Machine Learning", "Featured"],
     timeline_events: {}
   },
   {
@@ -73,6 +79,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Algorithms", "Hackathon", "Programming"],
     timeline_events: {}
   },
   {
@@ -83,6 +90,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Development", "Quest", "Web Dev"],
     timeline_events: {}
   },
   {
@@ -93,6 +101,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Data Science", "Analytics", "Hackathon"],
     timeline_events: {}
   },
   {
@@ -103,6 +112,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Security", "CTF", "Cybersecurity"],
     timeline_events: {}
   },
   {
@@ -113,6 +123,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Network", "Computing", "Infrastructure"],
     timeline_events: {}
   },
   {
@@ -123,6 +134,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["AI", "Hackathon", "Machine Learning"],
     timeline_events: {}
   },
   {
@@ -133,6 +145,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["IoT", "Innovation", "Hardware"],
     timeline_events: {}
   },
   {
@@ -143,6 +156,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Entrepreneurship", "Business", "Innovation"],
     timeline_events: {}
   },
   {
@@ -153,6 +167,7 @@ export const contests: Contest[] = [
     long_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat magna ac elementum pretium. Etiam ac tellus eget ligula placerat sollicitudin. Nam eget eros id lacus rutrum interdum. Duis a dolor eget nunc aliquam aliquet pellentesque nec neque. Etiam congue mauris non volutpat fermentum. In ullamcorper a elit eget porttitor. Integer commodo eros velit, ut eleifend erat vulputate porta. Sed molestie quam vel massa dapibus, nec dignissim felis dignissim. Cras sed mauris laoreet, mattis leo et, porttitor dolor.",
     registration_deadline: new Date("2025-08-15"),
     category: "Tertiary",
+    tags: ["Environment", "Sustainability", "Innovation"],
     timeline_events: {}
   },
 ];

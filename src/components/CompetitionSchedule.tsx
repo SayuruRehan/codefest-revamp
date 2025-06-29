@@ -1,209 +1,19 @@
 "use client";
 
 import FadeInSection from "@/components/FadeInSection";
+import { contests } from "@/data/contests";
 import { useState } from "react";
 
-const scheduleData = [
-  {
-    competition: "Coding Contest Primary",
-    regOpen: "Registration Open",
-    regClose: "15th August 2025",
-    firstRound: "22nd August 2025",
-    finalRound: "4th September 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Coding Contest Junior",
-    regOpen: "Registration Open",
-    regClose: "15th August 2025",
-    firstRound: "22nd August 2025",
-    finalRound: "4th September 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "Coding Contest Senior",
-    regOpen: "Registration Open",
-    regClose: "15th August 2025",
-    firstRound: "22nd August 2025",
-    finalRound: "4th September 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "ICT Quiz",
-    regOpen: "Registration Open",
-    regClose: "15th August 2025",
-    firstRound: "8th August 2025",
-    finalRound: "4th September 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "AI competition",
-    regOpen: "Registration Open",
-    regClose: "15th August 2025",
-    firstRound: "22nd August 2025",
-    finalRound: "4th September 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Algothon",
-    regOpen: "Registration Open",
-    regClose: "18th July 2025",
-    firstRound: "25th July 2025",
-    finalRound: "22nd August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "Designation",
-    regOpen: "Registration Open",
-    regClose: "25th July 2025",
-    firstRound: "1st August 2025",
-    finalRound: "2nd September 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "DevQuest",
-    regOpen: "Registration Open",
-    regClose: "To be announced",
-    firstRound: "To be announced",
-    finalRound: "To be announced",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Datathon",
-    regOpen: "Registration Open",
-    regClose: "To be announced",
-    firstRound: "26th July 2025",
-    finalRound: "23rd August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "Capture the Flag",
-    regOpen: "Registration Open",
-    regClose: "13th August 2025",
-    firstRound: "23rd August 2025",
-    finalRound: "2nd September 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "Web Development Challenge",
-    regOpen: "Registration Open",
-    regClose: "20th July 2025",
-    firstRound: "28th July 2025",
-    finalRound: "15th August 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Mobile App Development",
-    regOpen: "Registration Open",
-    regClose: "5th August 2025",
-    firstRound: "12th August 2025",
-    finalRound: "25th August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "UI/UX Design Contest",
-    regOpen: "Registration Open",
-    regClose: "10th August 2025",
-    firstRound: "17th August 2025",
-    finalRound: "30th August 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "Game Development",
-    regOpen: "Registration Open",
-    regClose: "22nd July 2025",
-    firstRound: "29th July 2025",
-    finalRound: "12th August 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Blockchain Challenge",
-    regOpen: "Registration Open",
-    regClose: "8th August 2025",
-    firstRound: "15th August 2025",
-    finalRound: "28th August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "IoT Innovation",
-    regOpen: "Registration Open",
-    regClose: "12th August 2025",
-    firstRound: "19th August 2025",
-    finalRound: "1st September 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "Cybersecurity Challenge",
-    regOpen: "Registration Open",
-    regClose: "6th August 2025",
-    firstRound: "13th August 2025",
-    finalRound: "26th August 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Data Visualization",
-    regOpen: "Registration Open",
-    regClose: "18th July 2025",
-    firstRound: "25th July 2025",
-    finalRound: "8th August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "Machine Learning Sprint",
-    regOpen: "Registration Open",
-    regClose: "14th August 2025",
-    firstRound: "21st August 2025",
-    finalRound: "3rd September 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "Cloud Computing Challenge",
-    regOpen: "Registration Open",
-    regClose: "16th July 2025",
-    firstRound: "23rd July 2025",
-    finalRound: "6th August 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Database Design Contest",
-    regOpen: "Registration Open",
-    regClose: "24th July 2025",
-    firstRound: "31st July 2025",
-    finalRound: "14th August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "Network Security",
-    regOpen: "Registration Open",
-    regClose: "2nd August 2025",
-    firstRound: "9th August 2025",
-    finalRound: "22nd August 2025",
-    image: "/ict-quiz.png",
-  },
-  {
-    competition: "Robotics Challenge",
-    regOpen: "Registration Open",
-    regClose: "28th July 2025",
-    firstRound: "4th August 2025",
-    finalRound: "18th August 2025",
-    image: "/coding-contest-primary.png",
-  },
-  {
-    competition: "Virtual Reality Development",
-    regOpen: "Registration Open",
-    regClose: "11th August 2025",
-    firstRound: "18th August 2025",
-    finalRound: "31st August 2025",
-    image: "/coding-contest-junior.png",
-  },
-  {
-    competition: "Digital Marketing Tech",
-    regOpen: "Registration Open",
-    regClose: "7th August 2025",
-    firstRound: "14th August 2025",
-    finalRound: "27th August 2025",
-    image: "/ict-quiz.png",
-  },
+// Define color arrays for dynamic tag styling
+const tagColors = [
+  { bg: "bg-blue-100", text: "text-blue-800" },
+  { bg: "bg-purple-100", text: "text-purple-800" },
+  { bg: "bg-green-100", text: "text-green-800" },
+  { bg: "bg-yellow-100", text: "text-yellow-800" },
+  { bg: "bg-red-100", text: "text-red-800" },
+  { bg: "bg-indigo-100", text: "text-indigo-800" },
+  { bg: "bg-pink-100", text: "text-pink-800" },
+  { bg: "bg-gray-100", text: "text-gray-800" },
 ];
 
 export default function CompetitionSchedule() {
@@ -212,12 +22,16 @@ export default function CompetitionSchedule() {
   const [entriesPerPage] = useState(10);
 
   // Filter data based on search query
-  const filteredData = scheduleData.filter(
-    (item) =>
-      item.competition.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.regClose.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.firstRound.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.finalRound.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = contests.filter(
+    (contest) =>
+      contest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contest.short_description
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      contest.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      ) ||
+      contest.category?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // Calculate pagination
@@ -233,10 +47,17 @@ export default function CompetitionSchedule() {
     setCurrentPage(1);
   };
 
+  // Helper function to get days until deadline
+  const getDaysUntilDeadline = (deadline: Date) => {
+    const today = new Date();
+    const diffTime = deadline.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return Math.max(0, diffDays);
+  };
+
   return (
     <FadeInSection delay={350}>
       <section className="py-16 bg-gray-50">
-        {" "}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search Bar - Centered */}
           <div className="flex justify-center mb-12">
@@ -261,65 +82,77 @@ export default function CompetitionSchedule() {
                 placeholder="Search competitions"
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-full text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-full text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-black"
               />
             </div>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {currentEntries.map((competition, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {currentEntries.map((contest, index) => (
               <div
                 key={startIndex + index}
                 className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
               >
-                {/* Competition Name Header */}
-                {/* <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4">
-                  <h3 className="text-xl font-bold text-center">
-                    {competition.competition}
-                    Registration Open
-                  </h3>
-                </div> */}
-
                 {/* Background Image Section */}
                 <div
-                  className="h-32 bg-cover bg-center"
+                  className="h-40 bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(${competition.image})`,
+                    backgroundImage: `url(${contest.cover_image})`,
                   }}
-                />
+                ></div>
 
-                {/* Card Body - Registration Info and Round Information */}
-                <div className="p-6 space-y-4">
-                  {/* Registration Info */}
-                  <div className="text-center">
-                    <div className="items-center px-3 py-1  text-xs font-bold bg-green-100 text-green-800 border border-green-200 mb-2">
-                      {competition.regOpen}
-                    </div>
-                    <p className="text-sm font-bold text-gray-900">
-                      Registration Close - {competition.regClose}
-                    </p>
+                {/* Card Body */}
+                <div className="p-6">
+                  {/* Competition Title */}
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {contest.name}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                    {contest.short_description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex items-center gap-2 mb-4 flex-wrap">
+                    {contest.tags.slice(0, 2).map((tag, tagIndex) => {
+                      const colorIndex = tagIndex % tagColors.length;
+                      const colors = tagColors[colorIndex];
+                      return (
+                        <span
+                          key={tagIndex}
+                          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text}`}
+                        >
+                          {tag}
+                        </span>
+                      );
+                    })}
                   </div>
 
-                  {/* Round Information */}
-                  <div className="border-t pt-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-sm font-bold text-gray-600 mb-1">
-                          First Round
-                        </p>
-                        <p className="text-sm font-bold text-gray-900">
-                          {competition.firstRound}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm font-bold text-gray-600 mb-1">
-                          Final Round
-                        </p>
-                        <p className="text-sm font-bold text-gray-900">
-                          {competition.finalRound}
-                        </p>
-                      </div>
+                  {/* Bottom section with prize and deadline */}
+                  <div className="border-t pt-4 flex items-center justify-between">
+                    <div className="flex items-center gap-1">
+                      <span className="text-lg font-bold text-gray-900">
+                        {contest.prize[0]}
+                      </span>
+                      <svg
+                        className="w-4 h-4 text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-medium text-gray-900">
+                        {getDaysUntilDeadline(contest.registration_deadline)}{" "}
+                        days to go
+                      </p>
                     </div>
                   </div>
                 </div>
