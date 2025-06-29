@@ -15,8 +15,12 @@ const Navbar = () => {
 
   const navItems = [
     { id: "home", name: "Home", path: "/" },
-    { id: "competition-details", name: "Competition Details", path: "/" },
-    { id: "gallery", name: "Gallery", path: "/" },
+    {
+      id: "competition-details",
+      name: "Competition Details",
+      path: "/competition-details",
+    },
+    { id: "gallery", name: "Gallery", path: "/gallery" },
     { id: "registration", name: "Registration", path: "/" },
     { id: "workshops", name: "Workshops", path: "/" },
     { id: "contact", name: "Contact Us", path: "/Contact" },
