@@ -206,10 +206,10 @@ export default function CompetitionSchedule() {
           </h2>
 
           {/* Entries per page selector */}
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-3 mb-8 bg-white rounded-lg shadow-md p-4 border">
             <label
               htmlFor="entriesPerPage"
-              className="text-sm font-medium text-gray-700"
+              className="text-sm font-semibold text-gray-700"
             >
               Show
             </label>
@@ -219,75 +219,111 @@ export default function CompetitionSchedule() {
               onChange={(e) =>
                 handleEntriesPerPageChange(Number(e.target.value))
               }
-              className="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border-2 border-gray-200 rounded-lg px-4 py-2 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>
               <option value={100}>100</option>
             </select>
-            <span className="text-sm text-gray-700">entries per page</span>
+            <span className="text-sm font-semibold text-gray-700">
+              entries per page
+            </span>
           </div>
 
-          {/* Table Header */}
-          <div className="bg-gray-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 p-4 mb-4 rounded-t-lg font-semibold text-gray-800">
-            <div className="text-center">Competition</div>
-            <div className="text-center">Registration Open</div>
-            <div className="text-center">Registration Close</div>
-            <div className="text-center">First Round</div>
-            <div className="text-center">Final Round</div>
-          </div>
+          {/* Table Container */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            {/* Table Header */}
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 font-semibold">
+              <div className="text-center">Competition</div>
+              <div className="text-center">Registration Status</div>
+              <div className="text-center">Registration Close</div>
+              <div className="text-center">First Round</div>
+              <div className="text-center">Final Round</div>
+            </div>
 
-          {/* Table Rows */}
-          <div className="space-y-2">
-            {currentEntries.map((row, index) => (
-              <div
-                key={startIndex + index}
-                className="bg-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 p-4 border border-gray-200 hover:bg-gray-50 transition-colors"
-              >
-                <div className="text-center font-medium text-gray-800">
-                  {row.competition}
+            {/* Table Rows */}
+            <div className="divide-y divide-gray-200">
+              {currentEntries.map((row, index) => (
+                <div
+                  key={startIndex + index}
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 hover:bg-blue-50 transition-colors duration-200 group"
+                >
+                  <div className="text-center lg:text-left">
+                    <div className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                      {row.competition}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <span className="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+                      {row.regOpen}
+                    </span>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-gray-700 font-medium">
+                      {row.regClose}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-gray-700 font-medium">
+                      {row.firstRound}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-gray-700 font-medium">
+                      {row.finalRound}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-center text-gray-600">{row.regOpen}</div>
-                <div className="text-center text-gray-600">{row.regClose}</div>
-                <div className="text-center text-gray-600">
-                  {row.firstRound}
-                </div>
-                <div className="text-center text-gray-600">
-                  {row.finalRound}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Pagination Info */}
-          <div className="mt-6 flex items-center justify-between text-sm text-gray-700">
-            <div>
-              Showing {startIndex + 1} to {Math.min(endIndex, totalEntries)} of{" "}
-              {totalEntries} entries
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between bg-white rounded-lg shadow-md p-4 border">
+            <div className="text-sm text-gray-600 mb-4 sm:mb-0">
+              Showing{" "}
+              <span className="font-semibold text-gray-900">
+                {startIndex + 1}
+              </span>{" "}
+              to{" "}
+              <span className="font-semibold text-gray-900">
+                {Math.min(endIndex, totalEntries)}
+              </span>{" "}
+              of{" "}
+              <span className="font-semibold text-gray-900">
+                {totalEntries}
+              </span>{" "}
+              entries
             </div>
             {totalPages > 1 && (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <button
                   onClick={() =>
                     setCurrentPage((prev) => Math.max(1, prev - 1))
                   }
                   disabled={currentPage === 1}
-                  className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700"
                 >
-                  Previous
+                  ← Previous
                 </button>
-                <span className="px-2">
-                  Page {currentPage} of {totalPages}
-                </span>
+                <div className="flex items-center gap-1">
+                  <span className="px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg">
+                    {currentPage}
+                  </span>
+                  <span className="px-2 text-sm text-gray-500">of</span>
+                  <span className="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg">
+                    {totalPages}
+                  </span>
+                </div>
                 <button
                   onClick={() =>
                     setCurrentPage((prev) => Math.min(totalPages, prev + 1))
                   }
                   disabled={currentPage === totalPages}
-                  className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700"
                 >
-                  Next
+                  Next →
                 </button>
               </div>
             )}
