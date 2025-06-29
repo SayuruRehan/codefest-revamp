@@ -218,9 +218,9 @@ export default function CompetitionSchedule() {
     <FadeInSection delay={350}>
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          {/* <h2 className="text-3xl font-bold text-center mb-12 text-black">
             Competition Schedule
-          </h2>
+          </h2> */}
 
           {/* Controls Row - Entries per page on left, Search on right */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
