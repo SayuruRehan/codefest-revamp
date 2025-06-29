@@ -7,7 +7,7 @@ const ContestCard = ({ contest }: Props) => {
   return (
     <div
       key={contest.name}
-className="grid content-between bg-white rounded-lg shadow-md border border-gray-200 max-w-85 transition-all cursor-pointer text-black hover:shadow-lg"
+      className="grid content-between bg-white rounded-lg shadow-md border border-gray-200 max-w-85 transition-all text-black hover:shadow-lg"
     >
       <div>
         <img src={contest.cover_image} alt="cover image" className="w-full rounded-t-lg h-40 bg-gray-200"/>
@@ -22,9 +22,11 @@ className="grid content-between bg-white rounded-lg shadow-md border border-gray
         </div>
       </div>
       <div className="p-4">
-        <button className="bg-black rounded-4xl text-white px-4 py-1 cursor-pointer">
-          View more
-        </button>
+        <a href={`/competition/${contest.slug}`}>
+          <button className="bg-black rounded-4xl text-white px-4 py-1 cursor-pointer">
+            View more
+          </button>
+        </a>
       </div>
     </div>
   );
