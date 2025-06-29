@@ -182,8 +182,8 @@ const scheduleData = [
 ];
 
 export default function CompetitionSchedule() {
-  const [entriesPerPage, setEntriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  const entriesPerPage = 10; // Fixed value since selector is removed
 
   // Calculate pagination
   const totalEntries = scheduleData.length;
@@ -192,11 +192,6 @@ export default function CompetitionSchedule() {
   const endIndex = startIndex + entriesPerPage;
   const currentEntries = scheduleData.slice(startIndex, endIndex);
 
-  const handleEntriesPerPageChange = (newEntriesPerPage: number) => {
-    setEntriesPerPage(newEntriesPerPage);
-    setCurrentPage(1); // Reset to first page when changing entries per page
-  };
-
   return (
     <FadeInSection delay={350}>
       <section className="py-16 bg-gray-50">
@@ -204,32 +199,6 @@ export default function CompetitionSchedule() {
           <h2 className="text-3xl font-bold text-center mb-12 text-black">
             Competition Schedule
           </h2>
-
-          {/* Entries per page selector */}
-          <div className="flex items-center gap-3 mb-8 bg-white rounded-lg shadow-md p-4 border">
-            <label
-              htmlFor="entriesPerPage"
-              className="text-sm font-semibold text-gray-700"
-            >
-              Show
-            </label>
-            <select
-              id="entriesPerPage"
-              value={entriesPerPage}
-              onChange={(e) =>
-                handleEntriesPerPageChange(Number(e.target.value))
-              }
-              className="border-2 border-gray-200 rounded-lg px-4 py-2 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-            >
-              <option value={10}>10</option>
-              <option value={25}>25</option>
-              <option value={50}>50</option>
-              <option value={100}>100</option>
-            </select>
-            <span className="text-sm font-semibold text-gray-700">
-              entries per page
-            </span>
-          </div>
 
           {/* Table Container */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
