@@ -3,6 +3,7 @@ import FadeInSection from "@/components/FadeInSection"
 import Navbar from "@/components/Navbar"
 import { contests } from "@/data/contests"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
 interface Props {
   params: {
@@ -48,6 +49,8 @@ export default async function Competition({ params }: Props) {
   const { name } = await params
   const competitionName = decodeURIComponent(name)
   const competitionData = contests.find(contest => contest.slug === competitionName)
+
+  if (!competitionData) notFound()
 
   const formatDate = (dateObject: Date | undefined): string => {
     if (!dateObject) return "";
