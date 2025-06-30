@@ -69,10 +69,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Countdown Timer */}
-      <FadeInSection>
-        <CountdownTimer />
-      </FadeInSection>
 
       {/* What is Codefest Section */}
       <FadeInSection delay={100}>
