@@ -1,3 +1,4 @@
+import BackgroundWrapper from "@/components/BackgroundWrapper"
 import CountdownTimer from "@/components/CountdownTimer"
 import FadeInSection from "@/components/FadeInSection"
 import Navbar from "@/components/Navbar"
@@ -68,121 +69,124 @@ export default async function Competition({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen pt-16 bg-white text-black">
-      <Navbar />
-      <section className="">
-        <h1 className="text-4xl font-bold text-center m-8 text-black">
-          {competitionData?.name}
-        </h1>
-        <div className="my-30">
-          <CountdownTimer targetDate={competitionData?.registration_deadline!} />
+    <BackgroundWrapper>
+
+      <main className="min-h-screen pt-16 bg-white text-black">
+        <Navbar />
+        <section className="">
+          <h1 className="text-4xl font-bold text-center m-8 text-black">
+            {competitionData?.name}
+          </h1>
+          <div className="my-30">
+            <CountdownTimer targetDate={competitionData?.registration_deadline!} />
+          </div>
+        </section>
+
+        {/* Competition details */}
+        <div className="flex justify-center">
+          <section className="relative w-fit my-10 mx-4">
+            {/* vertical line */}
+            <div className="absolute left-5 md:left-10 top-0 bottom-0 w-1 bg-[#FF7400]" />
+
+            {[
+              [<TrophyIcon />, "Competition details", competitionData?.competition_details],
+              [<CalendarIcon />, "Competition format", competitionData?.competition_format],
+              [<MedalIcon />, "Awards & selections", competitionData?.awards],
+            ].map((detail, index) => (
+              <div key={index} className="relative flex items-start mb-10">
+                <div className="w-10 md:w-20 flex-shrink-0">{detail[0]}</div>
+                <div className="hidden md:flex flex">
+                  <div className="w-50 h-1 bg-[#FF7400] mt-10 inline" />
+                  <div className="w-3 h-3 bg-[#FF7400] relative rounded-full mt-9" />
+                </div>
+                <div className="ml-6 md:ml-8 max-w-md">
+                  <h3 className="font-bold text-lg">{detail[1]}</h3>
+                  <p className="text-sm">{detail[2]}</p>
+                </div>
+              </div>
+            ))}
+          </section>
         </div>
-      </section>
-
-      {/* Competition details */}
-      <div className="flex justify-center">
-        <section className="relative w-fit my-10 mx-4">
-          {/* vertical line */}
-          <div className="absolute left-5 md:left-10 top-0 bottom-0 w-1 bg-[#FF7400]" />
-
-          {[
-            [<TrophyIcon />, "Competition details", competitionData?.competition_details],
-            [<CalendarIcon />, "Competition format", competitionData?.competition_format],
-            [<MedalIcon />, "Awards & selections", competitionData?.awards],
-          ].map((detail, index) => (
-            <div key={index} className="relative flex items-start mb-10">
-              <div className="w-10 md:w-20 flex-shrink-0">{detail[0]}</div>
-              <div className="hidden md:flex flex">
-                <div className="w-50 h-1 bg-[#FF7400] mt-10 inline" />
-                <div className="w-3 h-3 bg-[#FF7400] relative rounded-full mt-9" />
+        {/* Awards */}
+        <div className="flex mx-5 md:mx-20 my-10">
+          <section className="inline-block bg-gradient-to-r from-[#FF7400] to-[#0048FF] p-[2px] rounded-[28px] w-full">
+            <div className="grid sm:grid md:flex lg:flex justify-around px-10 py-4 bg-white rounded-[26px] text-xl">
+              <div className="grid justify-items-center w-full md:w-auto text-center">
+                <h3 className="text-[#FF7400]">Winner</h3>
+                <span>{competitionData?.prize[0] || "N/A"}</span>
               </div>
-              <div className="ml-6 md:ml-8 max-w-md">
-                <h3 className="font-bold text-lg">{detail[1]}</h3>
-                <p className="text-sm">{detail[2]}</p>
+              <div className="grid justify-items-center mx-0 md:mx-15 w-full md:w-auto text-center">
+                <h3 className="text-[#FF7400]">1st Runner Up</h3>
+                {competitionData?.prize[1] || "N/A"}
+              </div>
+              <div className="grid justify-items-center w-full md:w-auto text-center">
+                <h3 className="text-[#FF7400]">2nd Runner Up</h3>
+                {competitionData?.prize[2] || "N/A"}
               </div>
             </div>
-          ))}
+          </section>
+        </div>
+        <section>
+          <img
+            src={competitionData?.banner_image}
+            alt="banner"
+            className="mx-auto my-20 rounded-xl w-80 h-100"
+          />
         </section>
-      </div>
-      {/* Awards */}
-      <div className="flex mx-5 md:mx-20 my-10">
-        <section className="inline-block bg-gradient-to-r from-[#FF7400] to-[#0048FF] p-[2px] rounded-[28px] w-full">
-          <div className="grid sm:grid md:flex lg:flex justify-around px-10 py-4 bg-white rounded-[26px] text-xl">
-            <div className="grid justify-items-center w-full md:w-auto text-center">
-              <h3 className="text-[#FF7400]">Winner</h3>
-              <span>{competitionData?.prize[0] || "N/A"}</span>
-            </div>
-            <div className="grid justify-items-center mx-0 md:mx-15 w-full md:w-auto text-center">
-              <h3 className="text-[#FF7400]">1st Runner Up</h3>
-              {competitionData?.prize[1] || "N/A"}
-            </div>
-            <div className="grid justify-items-center w-full md:w-auto text-center">
-              <h3 className="text-[#FF7400]">2nd Runner Up</h3>
-              {competitionData?.prize[2] || "N/A"}
-            </div>
-          </div>
+        <section className="grid justify-items-center my-10 bg-gradient-to-r from-[#E0E9F9] to-[#FCE9D9] p-8 mx-5 md:mx-20 rounded-xl">
+          <span className="text-[#FF7400] font-bold text-xl">
+            Register before
+          </span>
+          <span className="font-semibold text-xl">
+            {formatDate(competitionData?.registration_deadline)}
+          </span>
         </section>
-      </div>
-      <section>
-        <img
-          src={competitionData?.banner_image}
-          alt="banner"
-          className="mx-auto my-20 rounded-xl w-80 h-100"
-        />
-      </section>
-      <section className="grid justify-items-center my-10 bg-gradient-to-r from-[#E0E9F9] to-[#FCE9D9] p-8 mx-5 md:mx-20 rounded-xl">
-        <span className="text-[#FF7400] font-bold text-xl">
-          Register before
-        </span>
-        <span className="font-semibold text-xl">
-          {formatDate(competitionData?.registration_deadline)}
-        </span>
-      </section>
-      {/* Footer */}
-      <FadeInSection delay={500}>
-        <footer className="bg-gray-900 text-white py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <h3 className="text-xl font-bold mb-4">SLIIT Codefest 2025</h3>
-                <p className="text-gray-400">
-                  The largest inter-university hackathon in Sri Lanka
-                </p>
+        {/* Footer */}
+        <FadeInSection delay={500}>
+          <footer className="bg-gray-900 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold mb-4">SLIIT Codefest 2025</h3>
+                  <p className="text-gray-400">
+                    The largest inter-university hackathon in Sri Lanka
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link href="/competition-details" className="text-gray-400 hover:text-white">
+                        Competition Details
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/registration" className="text-gray-400 hover:text-white">
+                        Registration
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/contact" className="text-gray-400 hover:text-white">
+                        Contact Us
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-4">Contact</h3>
+                  <p className="text-gray-400">
+                    Email: info@codefest.lk<br />
+                    Phone: +94 XX XXX XXXX
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link href="/competition-details" className="text-gray-400 hover:text-white">
-                      Competition Details
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/registration" className="text-gray-400 hover:text-white">
-                      Registration
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="text-gray-400 hover:text-white">
-                      Contact Us
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-4">Contact</h3>
-                <p className="text-gray-400">
-                  Email: info@codefest.lk<br />
-                  Phone: +94 XX XXX XXXX
-                </p>
+              <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 SLIIT Codefest. All rights reserved.</p>
               </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-              <p>&copy; 2024 SLIIT Codefest. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-      </FadeInSection>
-    </main>
+          </footer>
+        </FadeInSection>
+      </main>
+    </BackgroundWrapper>
   )
 }
