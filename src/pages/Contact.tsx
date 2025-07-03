@@ -60,12 +60,11 @@ export default function Contact() {
   const [state, setState] = useState({
     isSubmitted: false,
     isLoading: false,
-    error: null as string | null
   });
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setState(prev => ({ ...prev, isLoading: true, error: null }));
+    setState(prev => ({ ...prev, isLoading: true }));
     
     const formData = new FormData(e.currentTarget);
     const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
@@ -74,7 +73,6 @@ export default function Contact() {
       setState(prev => ({
         ...prev,
         isLoading: false,
-        error: "Form configuration error. Please try again later."
       }));
       return;
     }
@@ -97,17 +95,9 @@ export default function Contact() {
       const result = await response.json();
       if (result.success) {
         setState(prev => ({ ...prev, isSubmitted: true }));
-      } else {
-        setState(prev => ({
-          ...prev,
-          error: result.message || "Submission failed. Please try again."
-        }));
       }
-    } catch (error) {
-      setState(prev => ({
-        ...prev,
-        error: "Network error. Please check your connection and try again."
-      }));
+    } catch {
+      console.error("Network error. Please check your connection and try again.");
     } finally {
       setState(prev => ({ ...prev, isLoading: false }));
     }
@@ -129,7 +119,7 @@ export default function Contact() {
                 Message Sent Successfully!
               </h2>
               <p className="text-lg text-blue-700 mb-6 font-normal">
-                Thank you for contacting us. We'll get back to you soon.
+                Thank you for contacting us. We&apos;ll get back to you soon.
               </p>
               <Link href="/" className="inline-block text-orange-600 hover:text-orange-700 font-medium">
                 Return to Home
@@ -197,7 +187,7 @@ export default function Contact() {
               Contact SLIIT
             </h1>
             <p className="text-lg md:text-xl max-w-3xl mx-auto text-blue-800 leading-relaxed font-normal">
-              We'd love to hear from you! Reach out with questions, feedback, or just to say hello.
+              We&apos;d love to hear from you! Reach out with questions, feedback, or just to say hello.
             </p>
           </div>
 
@@ -259,11 +249,6 @@ export default function Contact() {
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-800">
                 Send Your Message
               </h2>
-              {state.error && (
-                <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg font-normal">
-                  {state.error}
-                </div>
-              )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <input 
                   type="hidden" 

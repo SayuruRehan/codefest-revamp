@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CountdownTimer from "@/components/CountdownTimer";
 import { useState } from "react";
 import FadeInSection from "@/components/FadeInSection";
 import Timeline from "@/components/Timeline";

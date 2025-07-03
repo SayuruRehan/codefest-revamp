@@ -2,14 +2,8 @@
 
 import Navbar from "@/components/Navbar";
 import CompetitionSchedule from "@/components/CompetitionSchedule";
-import { useState } from "react";
-import { contests } from "@/data/contests";
-import ContestCard from "@/components/ContestCard";
-import FadeInSection from "@/components/FadeInSection";
 
 export default function CompetitionDetailsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
   return (
     <main className="min-h-screen">
       <Navbar />

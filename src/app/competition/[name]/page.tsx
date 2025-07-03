@@ -6,12 +6,6 @@ import { contests } from "@/data/contests"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-interface Props {
-  params: {
-    name: string
-  }
-}
-
 function TrophyIcon() {
   return (
     <svg className="relative w-10 md:w-20 bg-white" viewBox="0 0 151 151" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +40,7 @@ function MedalIcon() {
   )
 }
 
-export default async function Competition({ params }: Props) {
+export default async function Competition({ params }: { params: Promise<{ name: string }> }) {
   const { name } = await params
   const competitionName = decodeURIComponent(name)
   const competitionData = contests.find(contest => contest.slug === competitionName)
@@ -78,7 +72,7 @@ export default async function Competition({ params }: Props) {
             {competitionData?.name}
           </h1>
           <div className="my-30">
-            <CountdownTimer targetDate={competitionData?.registration_deadline!} />
+            <CountdownTimer targetDate={competitionData?.registration_deadline} />
           </div>
         </section>
 
@@ -89,9 +83,9 @@ export default async function Competition({ params }: Props) {
             <div className="absolute left-5 md:left-10 top-0 bottom-0 w-1 bg-[#FF7400]" />
 
             {[
-              [<TrophyIcon />, "Competition details", competitionData?.competition_details],
-              [<CalendarIcon />, "Competition format", competitionData?.competition_format],
-              [<MedalIcon />, "Awards & selections", competitionData?.awards],
+              [<TrophyIcon key="trophy" />, "Competition details", competitionData?.competition_details],
+              [<CalendarIcon key="calendar" />, "Competition format", competitionData?.competition_format],
+              [<MedalIcon key="medal" />, "Awards & selections", competitionData?.awards],
             ].map((detail, index) => (
               <div key={index} className="relative flex items-start mb-10">
                 <div className="w-10 md:w-20 flex-shrink-0">{detail[0]}</div>
@@ -127,6 +121,7 @@ export default async function Competition({ params }: Props) {
           </section>
         </div>
         <section>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={competitionData?.banner_image}
             alt="banner"
