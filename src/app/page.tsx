@@ -72,7 +72,7 @@ export default function Home() {
 
       {/* What is Codefest Section */}
       <FadeInSection delay={100}>
-        <section className="py-16 bg-white">
+        <section className="py-16 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-8 text-black">
               What is SLIIT Codefest 2025?
@@ -97,7 +97,7 @@ export default function Home() {
 
       {/* Message from Coordinator */}
       <FadeInSection delay={200}>
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
@@ -148,7 +148,7 @@ export default function Home() {
 
       {/* Competition Categories */}
       <FadeInSection delay={300}>
-        <section className="py-16 bg-white">
+        <section className="py-16 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-start flex-wrap gap-x-3 gap-y-2">
               <h2 className="text-3xl font-bold mb-12 text-black">
@@ -217,7 +217,7 @@ export default function Home() {
 
       {/* Footer */}
       <FadeInSection delay={500}>
-        <footer className="bg-gray-900 text-white py-12">
+        <footer className="bg-gray-900 text-white py-12 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
