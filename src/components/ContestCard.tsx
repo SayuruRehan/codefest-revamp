@@ -1,4 +1,6 @@
 import { Contest } from "@/data/contests"
+import Image from "next/image";
+
 interface Props {
   contest: Contest;
 };
@@ -10,7 +12,7 @@ const ContestCard = ({ contest }: Props) => {
       className="grid content-between bg-white rounded-lg shadow-md border border-gray-200 max-w-85 transition-all text-black hover:shadow-lg"
     >
       <div>
-        <img src={contest.cover_image} alt="cover image" className="w-full rounded-t-lg h-40 bg-gray-200"/>
+        <Image src={contest.cover_image} alt="cover image" className="w-full rounded-t-lg h-40 bg-gray-200" width={400} height={160} />
         <div className="p-4">
           <h3 className="font-bold">{contest.name}</h3>
           <p

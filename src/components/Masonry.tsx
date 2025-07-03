@@ -1,9 +1,11 @@
+"use client";
 import React, {
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
+  useCallback,
 } from "react";
 import { gsap } from "gsap";
 
@@ -12,19 +14,24 @@ const useMedia = (
   values: number[],
   defaultValue: number
 ): number => {
-  const get = () =>
-    values[queries.findIndex((q) => matchMedia(q).matches)] ?? defaultValue;
+  const get = useCallback(() => {
+    if (typeof window === "undefined" || typeof matchMedia === "undefined") {
+      return defaultValue;
+    }
+    return values[queries.findIndex((q) => matchMedia(q).matches)] ?? defaultValue;
+  }, [queries, values, defaultValue]);
 
   const [value, setValue] = useState<number>(get);
 
   useEffect(() => {
+    if (typeof window === "undefined" || typeof matchMedia === "undefined") return;
     const handler = () => setValue(get);
     queries.forEach((q) => matchMedia(q).addEventListener("change", handler));
     return () =>
       queries.forEach((q) =>
         matchMedia(q).removeEventListener("change", handler)
       );
-  }, [queries]);
+  }, [queries, values, defaultValue, get]);
 
   return value;
 };
@@ -64,6 +71,10 @@ interface Item {
   img: string;
   url: string;
   height: number;
+  x?: number;
+  y?: number;
+  w?: number;
+  h?: number;
 }
 
 interface MasonryProps {
@@ -103,37 +114,6 @@ const Masonry: React.FC<MasonryProps> = ({
   const [containerRef, { width }] = useMeasure<HTMLDivElement>();
   const [imagesReady, setImagesReady] = useState(false);
 
-  const getInitialPosition = (item: any) => {
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return { x: item.x, y: item.y };
-
-    let direction = animateFrom;
-    if (animateFrom === "random") {
-      const dirs = ["top", "bottom", "left", "right"];
-      direction = dirs[
-        Math.floor(Math.random() * dirs.length)
-      ] as typeof animateFrom;
-    }
-
-    switch (direction) {
-      case "top":
-        return { x: item.x, y: -200 };
-      case "bottom":
-        return { x: item.x, y: window.innerHeight + 200 };
-      case "left":
-        return { x: -200, y: item.y };
-      case "right":
-        return { x: window.innerWidth + 200, y: item.y };
-      case "center":
-        return {
-          x: containerRect.width / 2 - item.w / 2,
-          y: containerRect.height / 2 - item.h / 2,
-        };
-      default:
-        return { x: item.x, y: item.y + 100 };
-    }
-  };
-
   useEffect(() => {
     preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
   }, [items]);
@@ -160,11 +140,37 @@ const Masonry: React.FC<MasonryProps> = ({
 
   useLayoutEffect(() => {
     if (!imagesReady) return;
-
+    const getInitialPosition = (item: Item) => {
+      const containerRect = containerRef.current?.getBoundingClientRect();
+      if (!containerRect) return { x: item.x ?? 0, y: item.y ?? 0 };
+      let direction = animateFrom;
+      if (animateFrom === "random") {
+        const dirs = ["top", "bottom", "left", "right"];
+        direction = dirs[
+          Math.floor(Math.random() * dirs.length)
+        ] as typeof animateFrom;
+      }
+      switch (direction) {
+        case "top":
+          return { x: item.x ?? 0, y: -200 };
+        case "bottom":
+          return { x: item.x ?? 0, y: window.innerHeight + 200 };
+        case "left":
+          return { x: -200, y: item.y ?? 0 };
+        case "right":
+          return { x: window.innerWidth + 200, y: item.y ?? 0 };
+        case "center":
+          return {
+            x: containerRect.width / 2 - (item.w ?? 0) / 2,
+            y: containerRect.height / 2 - (item.h ?? 0) / 2,
+          };
+        default:
+          return { x: item.x ?? 0, y: (item.y ?? 0) + 100 };
+      }
+    };
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
       const animProps = { x: item.x, y: item.y, width: item.w, height: item.h };
-
       if (!hasMounted.current) {
         const start = getInitialPosition(item);
         gsap.fromTo(
@@ -195,9 +201,8 @@ const Masonry: React.FC<MasonryProps> = ({
         });
       }
     });
-
     hasMounted.current = true;
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease, containerRef]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
     if (scaleOnHover) {
